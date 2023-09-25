@@ -1,8 +1,0 @@
-version: "Apple Swift version 5.7 (swiftlang-5.7.0.123.8 clang-1400.0.29.50)"
-options: "996753a37360fec44aa26fccfe45584b6ac6cc389bc52bd6ad5ceab204dc8e33"
-build_start_time: [1663148832, 179149150]
-build_end_time: [1663148833, 29103040]
-inputs:
-  "/Users/fido/Documents/ASU/Fall 2022/FSE 104/audible_maps_asu/macos/Flutter/GeneratedPluginRegistrant.swift": [1663148828, 135782480]
-  "/Users/fido/Documents/ASU/Fall 2022/FSE 104/audible_maps_asu/macos/Runner/AppDelegate.swift": [1662563482, 0]
-  "/Users/fido/Documents/ASU/Fall 2022/FSE 104/audible_maps_asu/macos/Runner/MainFlutterWindow.swift": [1662563482, 0]
