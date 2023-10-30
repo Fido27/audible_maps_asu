@@ -1,6 +1,6 @@
 {
-    "name": "audible_maps_asu",
-    "short_name": "audible_maps_asu",
+    "name": "mapbox_turn_by_turn",
+    "short_name": "mapbox_turn_by_turn",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
