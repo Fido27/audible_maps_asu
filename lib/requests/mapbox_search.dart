@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -23,7 +25,7 @@ Future getSearchResultsFromQueryUsingMapbox(String query) async {
   try {
     _dio.options.contentType = Headers.jsonContentType;
     final responseData = await _dio.get(url);
-    return responseData.data;
+    return jsonEncode(responseData.data);
   } catch (e) {
     final errorMessage = DioExceptions.fromDioError(e as DioError).toString();
     debugPrint(errorMessage);

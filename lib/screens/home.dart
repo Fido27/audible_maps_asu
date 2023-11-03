@@ -21,7 +21,7 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
     // Set initial camera position and current address
-    _initialCameraPosition = CameraPosition(target: currentLocation, zoom: 14);
+    _initialCameraPosition = CameraPosition(target: currentLocation, zoom: 15);
     currAddress = getCurrentAddressFromSharedPrefs();
   }
 

@@ -1,3 +1,4 @@
+import 'package:audible_maps_asu/widgets/search_listview.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/endpoints_card.dart';
@@ -73,8 +74,11 @@ class _PrepareRideState extends State<PrepareRide> {
             children: [
               endpointsCard(sourceController, destinationController),
               // Add a Linear Progress Indicator to show loading
+              isLoading? const LinearProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Colors.white),):Container(),
               // Show an appropriate message if no address has been entered, or no results are found
+              isEmptyResponse? Padding(padding: const EdgeInsets.only(top: 20), child: Center(child: Text(hasResponded? noResponse: noRequest))): Container(),
               // Show a list view of results to select one from
+              searchListView(responses, isResponseForDestination, destinationController, sourceController)
             ],
           ),
         ),

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:mapbox_gl/mapbox_gl.dart';
 
 import '../requests/mapbox_directions.dart';
@@ -21,9 +22,10 @@ Future<List> getParsedResponseForQuery(String value) async {
   if (query == '') return parsedResponses;
 
   // Else search and then send response
-  var response = json.decode(await getSearchResultsFromQueryUsingMapbox(query));
+  var response =
+      (jsonDecode(await getSearchResultsFromQueryUsingMapbox(query)));
 
-  List features = response['features'];
+  List features = response["features"];
   for (var feature in features) {
     Map response = {
       'name': feature['text'],

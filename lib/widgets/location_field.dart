@@ -1,5 +1,9 @@
 import 'dart:async';
+import 'dart:convert';
 
+import 'package:audible_maps_asu/helpers/mapbox_handler.dart';
+import 'package:audible_maps_asu/main.dart';
+import 'package:audible_maps_asu/screens/prepare_ride.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -27,15 +31,25 @@ class _LocationFieldState extends State<LocationField> {
 
   _onChangeHandler(value) {
     // Set isLoading = true in parent
+    PrepareRide.of(context)?.isLoadingState = true;
 
     // Make sure that requests are not made
     // until 1 second after the typing stops
+    if (searchOnStoppedTyping != null) {
+      setState(() => searchOnStoppedTyping?.cancel());
+    }
+    setState(() => searchOnStoppedTyping =
+        Timer(const Duration(seconds: 1), () => _searchHandler(value)));
   }
 
   _searchHandler(String value) async {
     // Get response using Mapbox Search API
+    List response = await getParsedResponseForQuery(value);
 
     // Set responses and isDestination in parent
+    PrepareRide.of(context)?.responsesState = response;
+    PrepareRide.of(context)?.isResponseForDestinationState =
+        widget.isDestination;
     setState(() => query = value);
   }
 
@@ -46,6 +60,10 @@ class _LocationFieldState extends State<LocationField> {
       // Get the response of reverse geocoding and do 2 things:
       // 1. Store encoded response in shared preferences
       // 2. Set the text editing controller to the address
+      var response = await getParsedReverseGeocoding(currentLocation);
+      sharedPreferences.setString("source", json.encode(response));
+      String place = response['place'];
+      widget.textEditingController.text = place;
     }
   }
 
