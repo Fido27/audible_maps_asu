@@ -1,3 +1,4 @@
+import 'package:audible_maps_asu/helpers/shared_prefs.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/turn_by_turn.dart';
@@ -5,6 +6,8 @@ import '../screens/turn_by_turn.dart';
 Widget reviewRideBottomSheet(
     BuildContext context, String distance, String dropOffTime) {
   // Get source and destination addresses from sharedPreferences
+  String sourceAddress = getSourceAndDestinationPlaceText("source");
+  String destinationAddress = getSourceAndDestinationPlaceText("destination");
 
   return Positioned(
     bottom: 0,
@@ -18,7 +21,7 @@ Widget reviewRideBottomSheet(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text('Source Address ➡ Destination Address',
+                Text('$sourceAddress ➡ $destinationAddress',
                     style: Theme.of(context)
                         .textTheme
                         .titleMedium

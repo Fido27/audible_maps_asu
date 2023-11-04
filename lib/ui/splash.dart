@@ -31,29 +31,10 @@ class _SplashState extends State<Splash> {
   }
 
   void initializeLocationAndSave() async {
-    // // Ensure all permissions are collected for Locations
-    // Location location = Location();
-    // bool? serviceEnabled;
-    // PermissionStatus? permissionGranted;
-
-    // debugPrint("\n\n local variables set \n\n");
-
-    // serviceEnabled = await location.serviceEnabled();
-    // if (!serviceEnabled) {
-    //   debugPrint("\n\n location not enabled \n\n");
-    //   serviceEnabled = await location.requestService();
-    // }
-
-    // permissionGranted = await location.hasPermission();
-    // if (permissionGranted == PermissionStatus.denied) {
-    //   debugPrint("\n\n permission denied \n\n");
-    //   permissionGranted = await location.requestPermission();
-    // }
 
     // Get the current user location
     Position locationData = await locatePosition();
-    LatLng currentLocation =
-        LatLng(locationData.latitude, locationData.longitude);
+    LatLng currentLocation = LatLng(locationData.latitude, locationData.longitude);
 
     debugPrint("\n\n got current location \n\n");
 
